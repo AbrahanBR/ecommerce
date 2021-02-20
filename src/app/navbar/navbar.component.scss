@@ -1,0 +1,11 @@
+.example-spacer {
+    flex: 1 1 auto;
+    padding: 0 70px;
+  }
+
+.navbar-container{
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: row;
+    align-items: center;
+}
