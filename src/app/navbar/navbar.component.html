@@ -1,30 +1,60 @@
-
 <mat-toolbar color="primary">
-    <div class="container navbar-container">
-        
-        <span>My App</span>
+  <div class="container navbar-container">
+    <span>My App</span>
 
-        <mat-form-field class="example-spacer">
-            <mat-label>Search</mat-label>
-            <input matInput placeholder="Ex. Pizza">
-        </mat-form-field>
+    <mat-form-field class="example-spacer">
+      <mat-label>Search</mat-label>
+      <input matInput placeholder="Ex. Pizza" />
+    </mat-form-field>
 
-        <button [matMenuTriggerFor]="user" mat-button class="example-icon" aria-label="Example icon-button with menu icon">
-            <mat-icon>person</mat-icon> {{"luCAs" | titlecase}}
-        </button>
+    <button
+      [matMenuTriggerFor]="user"
+      mat-button
+      class="example-icon"
+      aria-label="Example icon-button with menu icon"
+    >
+      <mat-icon>person</mat-icon> {{ "luCAs" | titlecase }}
+    </button>
 
-        <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-            <mat-icon>favorite</mat-icon>
-        </button>
+    <button
+      mat-icon-button
+      class="example-icon favorite-icon"
+      aria-label="Example icon-button with heart icon"
+    >
+      <mat-icon>favorite</mat-icon>
+    </button>
 
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-            <mat-icon>share</mat-icon>
-        </button>
+    <button
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with share icon"
+    >
+      <mat-icon>share</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+
+<mat-menu #user="matMenu">
+  <form #form="ngForm" (ngSubmit)="login(userName.value, password.value)" (click)="$event.stopPropagation()">
+    
+    <div mat-menu-item [disableRipple]="true">
+      <mat-form-field>
+        <mat-label>User Name</mat-label>
+        <input #userName="ngModel" ngModel name="userName" matInput placeholder="Ex. Abrahan" required/>
+      </mat-form-field>
     </div>
-  </mat-toolbar>
 
-  <mat-menu #user="matMenu">
-      <button mat-menu-item>Conta</button>
-      <button mat-menu-item>Sair</button>
-  </mat-menu>
-  
+    <div mat-menu-item [disableRipple]="true">
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input #password="ngModel" ngModel name="password" type="password" matInput required/>
+        </mat-form-field>
+    </div>
+
+    <div mat-menu-item [disableRipple]="true">
+        <button mat-button type="button">Create</button>
+        <button mat-raised-button color="primary" [disabled]="userName.invalid || password.invalid">Login</button>
+    </div>
+
+  </form>
+</mat-menu>
