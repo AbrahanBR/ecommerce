@@ -29,4 +29,27 @@ export class UserService {
             return user;
         }))
     }
+
+    createUser(user:UserInterface): Observable<UserInterface>{
+        return this.httpClient.post<UserInterface>(this.serviceUrl, user);
+    }
+
+    logout(): Observable<void>{
+        return new Observable((observe) => {
+            if(localStorage.getItem("user")){
+                localStorage.removeItem("user");
+                observe.next();
+                observe.complete();
+            }else{
+                observe.error(new Error("User Not Loged"));
+            }
+        })
+    }
+
+    getUserDetails(): UserInterface{
+        const userDetaisl = localStorage.getItem("user");
+        if(userDetaisl){
+            return <UserInterface>JSON.parse(userDetaisl);
+        }
+    }
 }

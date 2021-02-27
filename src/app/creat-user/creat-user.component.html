@@ -1,0 +1,92 @@
+  <mat-vertical-stepper linear #stepper>
+
+    <mat-step [stepControl]="firstNameFormGroup">
+      <form #firstNameFormGroup="ngForm">
+        <ng-template matStepLabel>Fill out your name</ng-template>
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input matInput ngModel name="firstNameNgModel" required>
+        </mat-form-field>
+        <div>
+          <button mat-raised-button color="primary" matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="lastNameFormGroup">
+      <form #lastNameFormGroup="ngForm">
+        <ng-template matStepLabel>Fill out your last name</ng-template>
+        <mat-form-field>
+          <mat-label>Last Name</mat-label>
+          <input matInput ngModel name="lastnameNgModel" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-raised-button color="primary" matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="emailFormGroup">
+        <form #emailFormGroup="ngForm">
+          <ng-template matStepLabel>Fill out your last name</ng-template>
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput ngModel name="emailNgModel" required>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-raised-button color="primary" matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+
+    <mat-step [stepControl]="userNameFormGroup">
+        <form #userNameFormGroup="ngForm">
+            <ng-template matStepLabel>Fill out your user name</ng-template>
+            <mat-form-field>
+            <mat-label>User Name</mat-label>
+                <input matInput ngModel name="userNameNgModel" required>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-raised-button color="primary" matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+
+      <mat-step [stepControl]="passwordFormGroup">
+        <form  class="forms-colun" #passwordFormGroup="ngForm">
+          <ng-template matStepLabel>Fill out your password</ng-template>
+          <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput ngModel name="passwordNgModel" type="password" required>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Confirm your password</mat-label>
+            <input matInput ngModel name="confirmPasswordNgModel" type="password" required>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-raised-button color="primary" matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-raised-button color="primary" (click)="create(
+                {
+                    email: emailFormGroup.form.value.emailNgModel,
+                    name: firstNameFormGroup.form.value.firstNameNgModel,
+                    lastName: lastNameFormGroup.form.value.lastnameNgModel,
+                    userName: userNameFormGroup.form.value.userNameNgModel,
+                    password: passwordFormGroup.form.value.passwordNgModel
+                }
+            )">Done</button>
+      </div>
+    </mat-step>
+  </mat-vertical-stepper>

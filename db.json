@@ -1,11 +1,20 @@
 {
-    "users": [
-        {
-            "email": "lucas.go22@hotmail.com",
-            "name": "lucas",
-            "lastName": "gomes",
-            "userName": "Abrahan",
-            "password": "1234"
-        }
-    ]
+  "users": [
+    {
+      "email": "lucas.go22@hotmail.com",
+      "name": "lucas",
+      "lastName": "gomes",
+      "userName": "Abrahan",
+      "password": "1234",
+      "id": 1
+    },
+    {
+      "email": "pedro.gay@gay.com",
+      "name": "pedro",
+      "lastName": "Gay",
+      "userName": "MikeJones",
+      "password": "123",
+      "id": 2
+    }
+  ]
 }
