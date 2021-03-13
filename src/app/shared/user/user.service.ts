@@ -10,14 +10,14 @@ import { map } from "rxjs/operators";
 })
 
 export class UserService {
-    private serviceUrl: string;
+    private userServiceUrl: string;
 
     constructor(private httpClient: HttpClient){
-        this.serviceUrl = `${environment.service.url}/users`;
+        this.userServiceUrl = `${environment.service.url}/users`;
     }
 
     login(userName: string, password: string): Observable<UserInterface>{
-        return this.httpClient.get<UserInterface[]>(this.serviceUrl).pipe(map((users) => {
+        return this.httpClient.get<UserInterface[]>(this.userServiceUrl).pipe(map((users) => {
            const user = users.find((userFinded) => 
                 (userFinded.userName === userName || userFinded.email === userName) && userFinded.password === password
             )
@@ -31,7 +31,7 @@ export class UserService {
     }
 
     createUser(user:UserInterface): Observable<UserInterface>{
-        return this.httpClient.post<UserInterface>(this.serviceUrl, user);
+        return this.httpClient.post<UserInterface>(this.userServiceUrl, user);
     }
 
     logout(): Observable<void>{

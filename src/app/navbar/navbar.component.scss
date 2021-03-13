@@ -9,3 +9,19 @@
     flex-direction: row;
     align-items: center;
 }
+
+.home-button,.home-button:visited,.home-button:active{
+  text-decoration: none;
+  color: #fff;
+}
+
+.cart-menu {
+  width: 100%;
+  & > span {
+    display: flex;
+    justify-content: space-between;
+    & > button {
+      /*width: 36px;*/
+    }
+  }
+}

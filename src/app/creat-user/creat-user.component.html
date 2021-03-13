@@ -8,7 +8,7 @@
           <input matInput ngModel name="firstNameNgModel" required>
         </mat-form-field>
         <div>
-          <button mat-raised-button color="primary" matStepperNext>Next</button>
+          <button mat-flat-button color="primary" matStepperNext>Next</button>
         </div>
       </form>
     </mat-step>
@@ -22,7 +22,7 @@
         </mat-form-field>
         <div>
           <button mat-button matStepperPrevious>Back</button>
-          <button mat-raised-button color="primary" matStepperNext>Next</button>
+          <button mat-flat-button color="primary" matStepperNext>Next</button>
         </div>
       </form>
     </mat-step>
@@ -36,7 +36,7 @@
           </mat-form-field>
           <div>
             <button mat-button matStepperPrevious>Back</button>
-            <button mat-raised-button color="primary" matStepperNext>Next</button>
+            <button mat-flat-button color="primary" matStepperNext>Next</button>
           </div>
         </form>
       </mat-step>
@@ -50,7 +50,7 @@
             </mat-form-field>
             <div>
                 <button mat-button matStepperPrevious>Back</button>
-                <button mat-raised-button color="primary" matStepperNext>Next</button>
+                <button mat-flat-button color="primary" matStepperNext>Next</button>
             </div>
         </form>
     </mat-step>
@@ -68,7 +68,7 @@
           </mat-form-field>
           <div>
             <button mat-button matStepperPrevious>Back</button>
-            <button mat-raised-button color="primary" matStepperNext>Next</button>
+            <button mat-flat-button color="primary" matStepperNext>Next</button>
           </div>
         </form>
       </mat-step>
@@ -78,7 +78,7 @@
       <p>You are now done.</p>
       <div>
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-raised-button color="primary" (click)="create(
+        <button mat-flat-button color="primary" (click)="create(
                 {
                     email: emailFormGroup.form.value.emailNgModel,
                     name: firstNameFormGroup.form.value.firstNameNgModel,

@@ -1,0 +1,35 @@
+<div class="general-product">
+    <div>
+        <h1>{{productTitle}}</h1>
+        <p>{{productDescription}}</p>
+    </div>
+
+    <img mat-card-image [src]="image" alt="Photo of a Shiba Inu">
+
+    <div>
+        <div>
+            <h2 class="price">{{price | currency}}</h2>
+        </div>
+
+        <div>
+            <p>
+                {{productDescription}}
+            </p>
+        </div>
+
+
+        <div>
+            <button mat-flat-button class="item" color="primary" (click)="openDialog()"><mat-icon>local_mall</mat-icon> Buy</button>
+
+            <ng-container *ngIf="favorite; then favoriteOn; else favoriteOut"></ng-container>
+            <ng-template #favoriteOn>
+                <button mat-icon-button color="accent"><mat-icon>favorite</mat-icon></button>
+            </ng-template>
+
+            <ng-template #favoriteOut>
+                <button mat-icon-button><mat-icon>favorite</mat-icon></button>
+            </ng-template>
+
+        </div>
+    </div>
+</div>

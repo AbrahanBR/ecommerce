@@ -1,20 +1,46 @@
 {
   "users": [
     {
+      "id": 1,
       "email": "lucas.go22@hotmail.com",
       "name": "lucas",
       "lastName": "gomes",
       "userName": "Abrahan",
       "password": "1234",
-      "id": 1
+      "favs": [],
+      "cart": [
+        1,
+        1,
+        1,
+        1,
+        2
+      ]
     },
     {
+      "id": 2,
       "email": "pedro.gay@gay.com",
       "name": "pedro",
       "lastName": "Gay",
       "userName": "MikeJones",
       "password": "123",
-      "id": 2
+      "favs": [],
+      "cart": []
+    }
+  ],
+  "items": [
+    {
+      "id": 1,
+      "title": "Teste",
+      "description": "description teste",
+      "images": "https://i0.wp.com/gamelogia.com.br/wp-content/uploads/2016/11/gamer.jpg?resize=1280%2C640&ssl=1",
+      "price": 1000.99
+    },
+    {
+      "id": 2,
+      "title": "Teste2",
+      "description": "description teste",
+      "images": "https://material.angular.io/assets/img/examples/shiba2.jpg",
+      "price": 99.99
     }
   ]
 }

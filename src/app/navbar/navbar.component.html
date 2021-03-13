@@ -1,36 +1,37 @@
 <mat-toolbar color="primary">
-  <div class="container navbar-container">
-    <span>My App</span>
 
+<!----------------------------------------------HOME BUTTON--------------------------------------------------->    
+  <div class="container navbar-container">
+    <a routerLink="home" class="home-button mat-h1">Stark Industries</a>
+
+<!-----------------------------------------SEARCH BAR  BUTTON--------------------------------------------------->       
     <mat-form-field class="example-spacer">
       <mat-label>Search</mat-label>
       <input matInput placeholder="Ex. Pizza" />
     </mat-form-field>
 
+<!----------------------------------------------USER BUTTON--------------------------------------------------->    
     <ng-container *ngIf="userDetails; then buttonLoggedIn; else buttonLoggedOut"></ng-container>
-    <ng-template #buttonLoggedIn>
-      <button 
-      #menuEventLogIn="matMenuTrigger"
-      [matMenuTriggerFor]="userLoged"
-      mat-button
-      class="example-icon"
-      aria-label="Example icon-button with menu icon"
-    >
-        <mat-icon>person</mat-icon> {{ userDetails?.name | titlecase }}
-      </button>
-    </ng-template>
+      <ng-template #buttonLoggedIn>
+        <button 
+        #menuEventLogIn="matMenuTrigger"
+        [matMenuTriggerFor]="userLoged"
+        mat-button
+      >
+          <mat-icon>person</mat-icon> {{ userDetails?.name | titlecase }}
+        </button>
+      </ng-template>
 
-    <ng-template #buttonLoggedOut>
-      <button 
-      #menuEventLogOut="matMenuTrigger"
-      [matMenuTriggerFor]="userNotLoged"
-      mat-button
-      class="example-icon"
-      aria-label="Example icon-button with menu icon"
-    >
+      <ng-template #buttonLoggedOut>
+        <button 
+        #menuEventLogOut="matMenuTrigger"
+        [matMenuTriggerFor]="userNotLoged"
+        mat-button
+      >
         <mat-icon>person_outline</mat-icon> Login</button>
     </ng-template>
 
+<!---------------------------------------------FAVORITE BUTTON------------------------------------------------>    
     <button
       mat-icon-button
       class="example-icon favorite-icon"
@@ -39,15 +40,30 @@
       <mat-icon>favorite</mat-icon>
     </button>
 
+<!-----------------------------------------------CART BUTTON----------------------------------------------------->    
+
+  <ng-container *ngIf="userDetails; then buttonCartLoggedIn; else buttonCartLoggedOut"></ng-container>
+  
+  <ng-template #buttonCartLoggedIn>
     <button
-      mat-icon-button
-      class="example-icon"
-      aria-label="Example icon-button with share icon"
-    >
-      <mat-icon>share</mat-icon>
-    </button>
+    #menuEventUserCart="matMenuTrigger"
+    [matMenuTriggerFor]="userCart"
+    mat-icon-button
+    [matBadge]="userItemCartAmount"
+    matBadgeColor="warn">
+    <mat-icon>shopping_cart</mat-icon>
+  </button>
+  </ng-template>
+  
+  <ng-template #buttonCartLoggedOut>
+    <button mat-icon-button><mat-icon>shopping_cart</mat-icon></button>
+  </ng-template>
+
+
+
   </div>
 </mat-toolbar>
+<!-----------------------------------------MAT MENU USER BUTTON---------------------------------------------------->
 
 <mat-menu #userNotLoged="matMenu">
   <form #form="ngForm" (ngSubmit)="login(userName.value, password.value)" (click)="$event.stopPropagation()">
@@ -68,7 +84,7 @@
 
     <div mat-menu-item [disableRipple]="true">
         <a routerLink="register" mat-button type="button">Create</a>
-        <button mat-raised-button color="primary" [disabled]="userName.invalid || password.invalid">Login</button>
+        <button mat-flat-button color="primary" [disabled]="userName.invalid || password.invalid">Login</button>
     </div>
 
   </form>
@@ -77,6 +93,19 @@
 <mat-menu #userLoged="matMenu">
   <button mat-menu-item><mat-icon>settings</mat-icon>Settings</button>
   <div mat-menu-item>
-    <button mat-raised-button color="warn" (click)="logout()"><mat-icon>logout</mat-icon> Exit</button>
+    <button mat-flat-button color="warn" (click)="logout()"><mat-icon>logout</mat-icon> Exit</button>
   </div>
 </mat-menu>
+
+<!-----------------------------------------MAT MENU CART BUTTON---------------------------------------------------->
+
+  <mat-menu #userCart="matMenu" class="teste">
+    
+    <span  mat-menu-item *ngFor="let item of itemDetails" style="display: flex; ">
+      
+        <p>{{item.title}}  {{item.price | currency}}</p>
+        
+        <button mat-icon-button color="warn"><mat-icon>delete_forever</mat-icon></button>
+    </span>
+
+  </mat-menu>
