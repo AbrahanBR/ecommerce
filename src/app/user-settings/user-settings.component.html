@@ -1,0 +1,12 @@
+<mat-card>
+    <p>User Name: <b>{{userDetails.name | titlecase}} {{userDetails.lastName | titlecase}} <a routerLink="home">Alter</a></b></p>
+    <p>E-mail: <b>{{userDetails.email}} <a routerLink="home">Alter</a></b></p>
+    <p>Password: <b>******* <a routerLink="home">Alter</a></b></p>
+</mat-card>
+
+<div *ngFor="let credCard of userDetails.credCard">
+    <mat-card>
+        <p>Name: <b>{{credCard.name | uppercase}}</b></p>
+        <P>Number: <b><mat-icon>payment</mat-icon>**** **** **** {{credCard.number | creditCard}}</b></P>
+    </mat-card>
+</div>

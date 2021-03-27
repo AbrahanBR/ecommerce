@@ -27,6 +27,8 @@ import { ItemCardComponent } from './item-card/item-card.component';
 import { ItemPageComponent } from './item-page/item-page.component';
 import { CartService } from './shared/cart/cart.service';
 import { PurchaseDialogComponent } from './purchase-dialog/purchase-dialog.component';
+import { UserSettingsComponent } from './user-settings/user-settings.component';
+import { CreditCardPipe } from './shared/credit-card/credit-card.pipe';
 
 
 @NgModule({
@@ -37,7 +39,9 @@ import { PurchaseDialogComponent } from './purchase-dialog/purchase-dialog.compo
     HomeComponent,
     ItemCardComponent,
     ItemPageComponent,
-    PurchaseDialogComponent
+    PurchaseDialogComponent,
+    UserSettingsComponent,
+    CreditCardPipe
   ],
   imports: [
     BrowserModule,

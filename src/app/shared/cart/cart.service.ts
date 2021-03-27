@@ -13,6 +13,7 @@ import { UserService } from "../user/user.service";
 export class CartService {
     private cartServiceUrl: string;
     private itemCartAmount: BehaviorSubject<ItemInterface[]> = new BehaviorSubject<ItemInterface[]>([]);
+    
     constructor(
         private httpClient: HttpClient, 
         private userService: UserService,
@@ -37,8 +38,6 @@ export class CartService {
     }
 
     addToCart(item: ItemInterface): Observable<void>{
-       
-
         const user = this.userService.getUserDetails();
         if(user){
             user.cart.push(item.id);
@@ -50,7 +49,24 @@ export class CartService {
         }
     }
 
+    deleteToCart( id: number): Observable<void>{
+        const user = this.userService.getUserDetails();
+        if(user){
+            const index = user.cart.findIndex((productId) => productId === id);
+            const cartItens = [...this.itemCartAmount.value];
+            const itemCartIndex = cartItens.findIndex((item) => item.id === id);
+            
+            cartItens.splice(itemCartIndex, 1);
+            this.itemCartAmount.next(cartItens);
+
+            user.cart.splice(index,1);
+            localStorage.setItem("user",JSON.stringify(user));
+            return this.httpClient.put<void>(`${this.cartServiceUrl}/${user.id}`, user);
+        }
+    }
+
     getItemCart(): Observable<ItemInterface[]>{
         return this.itemCartAmount.asObservable();
+
     }
 }

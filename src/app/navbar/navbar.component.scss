@@ -1,18 +1,40 @@
 .example-spacer {
-    flex: 1 1 auto;
-    padding: 0 70px;
-  }
+  flex: 1 1 auto;
+  padding: 0 70px;
+}
+
+.navbar-color {
+  background-color: #f4b170;
+  color: #fff;
+  height: 85px;
+}
+
+#japa{
+  font-size: 20px;
+  transform: rotate(270deg);
+  margin-bottom: 16px;
+  height: 10px;
+}
+
+.home-title{
+  font-family: monospace;
+}
 
 .navbar-container{
-    display: flex;
-    box-sizing: border-box;
-    flex-direction: row;
-    align-items: center;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: row;
+  align-items: center;
 }
 
 .home-button,.home-button:visited,.home-button:active{
   text-decoration: none;
   color: #fff;
+  font-family: fantasy;
+  letter-spacing: 2px;
+  font-size: 50px;
+  /*transform: rotate(10deg);*/
+
 }
 
 .cart-menu {

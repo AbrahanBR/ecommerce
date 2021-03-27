@@ -18,8 +18,10 @@ export class NavbarComponent implements OnInit{
   @ViewChild(MatMenuTrigger, {read:MatMenuTrigger}) matMenuTrigger : MatMenuTrigger;
   public userDetails: UserInterface;
   public itemDetails: Array<ItemInterface>;
+  public cartValue: number;
   public userItemCartAmount:number; 
   public itensCart: Array<ItemInterface>;
+  public hide = true;
 
   constructor(
     private itemService: ItemService,
@@ -52,11 +54,19 @@ export class NavbarComponent implements OnInit{
 
   badgeButtonCartFunctionality(){
     this.cartService.getItemCart().subscribe((itens) => {
+      this.cartValue = 0;
       this.userItemCartAmount = itens.length;
       this.itemDetails = itens;
-    })
+      this.itemDetails.sort((a,b) => a.id - b.id);
+      this.itemDetails.forEach((value) => {
+        console.log(value.price);
+        this.cartValue += value.price;
+      })
+    });
   }
 
-
+  deleteItemCart(index){
+    this.cartService.deleteToCart(index).subscribe();
+  }
 
 }

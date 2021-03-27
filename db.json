@@ -8,12 +8,16 @@
       "userName": "Abrahan",
       "password": "1234",
       "favs": [],
-      "cart": [
-        1,
-        1,
-        1,
-        1,
-        2
+      "cart": [],
+      "credCard": [
+        {
+          "name": "lucas gomes martins",
+          "number": 1234123412345555
+        },
+        {
+          "name": "pedro spyder gay",
+          "number": 4321432143214321
+        }
       ]
     },
     {
@@ -24,7 +28,8 @@
       "userName": "MikeJones",
       "password": "123",
       "favs": [],
-      "cart": []
+      "cart": [],
+      "credCard": []
     }
   ],
   "items": [
@@ -41,6 +46,34 @@
       "description": "description teste",
       "images": "https://material.angular.io/assets/img/examples/shiba2.jpg",
       "price": 99.99
+    },
+    {
+      "id": 3,
+      "title": "Stadia Controller",
+      "description": "description teste",
+      "images": "https://bugg.com.br/wp-content/uploads/2020/06/stadia-blog.jpg",
+      "price": 0.01
+    },
+    {
+      "id": 4,
+      "title": "Playstation 4",
+      "description": "uma bosta que não tem jogo",
+      "images": "https://s2.glbimg.com/fUP5pQG7VlRYYqcrkZ3pgcq6ZC4=/1200x/smart/filters:cover():strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2019/s/I/UaAU97RFAbQZ9o2HtITA/captura-de-tela-2019-02-06-as-13.21.40.png",
+      "price": 1400
+    },
+    {
+      "id": 5,
+      "title": "PsVita da nintendo",
+      "description": "melhor que o da sony",
+      "images": "https://images-na.ssl-images-amazon.com/images/I/61l5jTSZbUL._AC_SL1000_.jpg",
+      "price": 999999999.99
+    },
+    {
+      "id": 6,
+      "title": "Super Nintendo",
+      "description": "Melhor video game que ja existiu na face da terra",
+      "images": "https://images.tcdn.com.br/img/img_prod/430410/arrkeo_childhood_retro_mini_classic_tv_hdmi_8_bit_video_game_console_built_in_621_games_handheld_gam_442_1_20180528155024.jpg",
+      "price": 450
     }
   ]
 }

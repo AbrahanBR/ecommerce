@@ -1,15 +1,17 @@
-<mat-toolbar color="primary">
+<mat-toolbar class="navbar-color">
 
 <!----------------------------------------------HOME BUTTON--------------------------------------------------->    
   <div class="container navbar-container">
-    <a routerLink="home" class="home-button mat-h1">Stark Industries</a>
+    <span id="japa">地点</span>
+    <a routerLink="home" class="home-button mat-h1" id="home-title">Stark Industries</a>
 
-<!-----------------------------------------SEARCH BAR  BUTTON--------------------------------------------------->       
-    <mat-form-field class="example-spacer">
-      <mat-label>Search</mat-label>
-      <input matInput placeholder="Ex. Pizza" />
+<!-----------------------------------------SEARCH BAR  BUTTON--------------------------------------------------->    
+    <mat-form-field  class="example-spacer" appearance="outline">
+      <mat-label><b>What are you looking for ?</b></mat-label>
+      <input matInput/>
+      <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
-
+  
 <!----------------------------------------------USER BUTTON--------------------------------------------------->    
     <ng-container *ngIf="userDetails; then buttonLoggedIn; else buttonLoggedOut"></ng-container>
       <ng-template #buttonLoggedIn>
@@ -69,16 +71,20 @@
   <form #form="ngForm" (ngSubmit)="login(userName.value, password.value)" (click)="$event.stopPropagation()">
     
     <div mat-menu-item [disableRipple]="true">
-      <mat-form-field>
+      <mat-form-field appearance="fill">
         <mat-label>User Name</mat-label>
         <input #userName="ngModel" ngModel name="userName" matInput placeholder="Ex. Abrahan" required/>
       </mat-form-field>
     </div>
 
     <div mat-menu-item [disableRipple]="true">
-        <mat-form-field>
-          <mat-label>Password</mat-label>
-          <input #password="ngModel" ngModel name="password" type="password" matInput required/>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your password</mat-label>
+          <input matInput #password="ngModel" ngModel name="password" [type]="hide ? 'password' : 'text'" required>
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" type="button" >
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
         </mat-form-field>
     </div>
 
@@ -91,7 +97,7 @@
 </mat-menu>
  
 <mat-menu #userLoged="matMenu">
-  <button mat-menu-item><mat-icon>settings</mat-icon>Settings</button>
+  <a routerLink="acount_settings" mat-menu-item><mat-icon>settings</mat-icon>Settings</a>
   <div mat-menu-item>
     <button mat-flat-button color="warn" (click)="logout()"><mat-icon>logout</mat-icon> Exit</button>
   </div>
@@ -100,12 +106,26 @@
 <!-----------------------------------------MAT MENU CART BUTTON---------------------------------------------------->
 
   <mat-menu #userCart="matMenu" class="teste">
+    <ng-container *ngIf="cartValue === 0; then cartEmpty; else cartHasItem"></ng-container>
     
-    <span  mat-menu-item *ngFor="let item of itemDetails" style="display: flex; ">
-      
-        <p>{{item.title}}  {{item.price | currency}}</p>
+    <ng-template #cartEmpty>
+      <span mat-menu-item [disableRipple]="true">Let's go Shopping <mat-icon>mood</mat-icon></span>
+    </ng-template>
+
+    <ng-template #cartHasItem>
+      <div  mat-menu-item *ngFor="let item of itemDetails" style="display: flex; justify-content: space-between;" (click)="$event.stopPropagation()" [disableRipple]="true">      
+          <span><b>{{item.title}}</b></span>  
+          <div>
+            <span style="color: green;">{{item.price | currency}}</span>
+            <button mat-icon-button color="warn" (click)="deleteItemCart(item.id)" type="button"><mat-icon>delete_forever</mat-icon></button>
+          </div>
+      </div>
+
+      <div mat-menu-item  style="display: flex; justify-content: space-between;" (click)="$event.stopPropagation()" [disableRipple]="true">
+          <span style="color: green; margin-right: 10px;"><b>{{cartValue | currency}} </b></span>
+          <button mat-flat-button color="primary">End Purchase</button>
         
-        <button mat-icon-button color="warn"><mat-icon>delete_forever</mat-icon></button>
-    </span>
+      </div>
+    </ng-template>
 
   </mat-menu>

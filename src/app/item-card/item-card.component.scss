@@ -1,7 +1,12 @@
 .item-card{
     cursor: pointer;
     max-width: 300px;
+    margin-bottom: 20px;
 }
 
-
+img {
+    object-fit: cover;
+    height: 300px;
+    width: 300px;
+}
 

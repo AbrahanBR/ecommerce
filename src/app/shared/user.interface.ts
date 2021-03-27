@@ -1,5 +1,3 @@
-import { ItemInterface } from "./item.interface";
-
 export interface UserInterface {
     id?: number;
     email: string;
@@ -9,4 +7,8 @@ export interface UserInterface {
     password: string;
     cart?: Array<number>;
     favs?: Array<number>;
+    credCard?: Array<{
+        name: string;
+        number: number;
+    }>;
 }

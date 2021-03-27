@@ -1,7 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { 
+    margin: 0; 
+    font-family: Roboto,"Helvetica Neue", sans-serif; 
+    /*background-image: url('./assets/images/space-dinosaur.png');
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-position-x: right;
+    background-color: #252525;
+    color: #fff;*/
+    background-color: #E7E7E7;
+    
+
+}
 .container{
     width: 1140px;
     margin: auto;
